@@ -1,7 +1,5 @@
 import iziToast from 'izitoast';
-import 'izitoast/dist/css/iziToast.min.css';
 import SimpleLightbox from 'simplelightbox';
-import 'simplelightbox/dist/simple-lightbox.min.css';
 
 import { fetchPhotosByQuery } from './js/pixabay-api';
 import { createGalleryCardTemplate } from './js/render-functions';
