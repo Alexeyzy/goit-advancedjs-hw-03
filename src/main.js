@@ -52,6 +52,9 @@ function onSearchFormSubmit(event) {
         .join('');
 
       refs.gallery.innerHTML = markup;
+      refs.gallery.querySelectorAll('.gallery-card').forEach(card =>
+        setTimeout(() => card.classList.add('show'), 50)
+      );
       lightbox.refresh();
     })
     .catch(() => {
