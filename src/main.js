@@ -20,13 +20,13 @@ refs.form.addEventListener('submit', onSearchFormSubmit);
 function onSearchFormSubmit(event) {
   event.preventDefault();
 
-  const query = event.target.elements.user_query.value.trim();
+  const { target: searchForm } = event;
+  const query = searchForm.elements.user_query.value.trim();
   refs.gallery.innerHTML = '';
 
   if (!query) {
     iziToast.warning({
-      message:
-        'Please enter a search query before submitting!',
+      message: 'Please enter a search query before submitting!',
       position: 'topRight',
     });
     return;
@@ -50,9 +50,9 @@ function onSearchFormSubmit(event) {
         .join('');
 
       refs.gallery.innerHTML = markup;
-      refs.gallery.querySelectorAll('.gallery-card').forEach(card =>
-        setTimeout(() => card.classList.add('show'), 50)
-      );
+      refs.gallery
+        .querySelectorAll('.gallery-card')
+        .forEach(card => setTimeout(() => card.classList.add('show'), 50));
       lightbox.refresh();
     })
     .catch(() => {
@@ -63,6 +63,6 @@ function onSearchFormSubmit(event) {
     })
     .finally(() => {
       refs.loader.classList.remove('is-active');
-      event.target.reset();
+      searchForm.reset();
     });
 }
